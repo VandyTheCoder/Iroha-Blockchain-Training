@@ -1,5 +1,5 @@
 1. Run Command ```docker-compose up -d``` - for starting up docker-compose.
-2. Run Command ```ocker ps``` - for getting list up-running container.
+2. Run Command ```docker ps``` - for getting list up-running container.
 3. Select One of Iroha Node and Get Its' Container ID.
 4. Run Command ```docker exec -it <container id> bash```.
 5. After get in node Run Command ```iroha-cli -account_name root@sorakh``` - for login as root account.
