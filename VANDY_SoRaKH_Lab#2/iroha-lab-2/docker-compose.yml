@@ -77,6 +77,25 @@ services:
       - iroha-network
     restart: on-failure
   
+  iroha_fifth_node:
+    image: hyperledger/iroha:latest
+    container_name: iroha_fifth_node
+    expose: 
+      - 10001
+    ports:
+      - 50056:50051
+    environment:
+      - "KEY=node4"
+      - "IROHA_POSTGRES_HOST=postgres_5"
+    volumes:
+      - ./blockstore/blockstore_4:/tmp/block_store
+      - ./config_5:/opt/iroha_data
+    depends_on:
+      - postgres_5
+    networks:
+      - iroha-network
+    restart: on-failure
+  
   postgres_1:
     image: postgres:9.5
     container_name: postgres_1
@@ -121,6 +140,18 @@ services:
       POSTGRES_PASSWORD: pwd123
     ports:
       - 5436:5432
+    networks:
+      - iroha-network
+    restart: on-failure
+  
+  postgres_5:
+    image: postgres:9.5
+    container_name: postgres_5
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: pwd123
+    ports:
+      - 5437:5432
     networks:
       - iroha-network
     restart: on-failure
