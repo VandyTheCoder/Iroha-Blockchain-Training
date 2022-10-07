@@ -66,8 +66,8 @@ services:
     ports:
       - 50055:50051
     environment:
-      - "KEY=node2"
-      - "IROHA_POSTGRES_HOST=postgres_3"
+      - "KEY=node3"
+      - "IROHA_POSTGRES_HOST=postgres_4"
     volumes:
       - ./blockstore/blockstore_3:/tmp/block_store
       - ./config_4:/opt/iroha_data
